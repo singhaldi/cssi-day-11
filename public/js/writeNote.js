@@ -1,6 +1,8 @@
 let googleUser = null;
 
 console.log("writeNotes.js is loaded")
+const welcomeText = document.querySelector("#welcome");
+
 
 window.onload = () => {
     firebase.auth().onAuthStateChanged(user => {
@@ -8,6 +10,7 @@ window.onload = () => {
             //this code runs if the user is logged in 
             console.log("logged in as ", user.displayName)
             googleUser = user;
+            welcomeText.innerHTML = "Welcome, " + googleUser;
         }
         else{
             //this code runs if the user isn't logged in
